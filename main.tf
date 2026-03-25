@@ -53,6 +53,9 @@ resource "aws_s3_object" "hello_file" {
   key          = "hello.txt"
   source       = "hello.txt"
   content_type = "text/plain"
+
+  # This line is the magic fix:
+  source_hash = filemd5("hello.txt")
 }
 
 #################################
